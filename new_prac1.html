@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            const firstName = document.querySelector('input[type="text"]').value;
+            const age = document.querySelector('input[placeholder="Type number only"]').value;
+            const dob = document.querySelector('input[type="date"]').value;
+            const email = document.querySelector('input[placeholder="@abes.ac.in"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+            const tShirtSize = document.querySelector('input[type="radio"]:checked');
+            const color = document.querySelector('input[type="color"]').value;
+            const about = document.getElementById('textarea').value;
+            let isValid = true;
+            let errorMessage = '';
+            if (!firstName || !/^[a-zA-Z]+$/.test(firstName)) {
+                isValid = false;
+                errorMessage += 'First Name must be filled and contain only letters.\n';
+            }
+            if (!age || isNaN(age) || age < 0 || age > 120) {
+                isValid = false;
+                errorMessage += 'Age must be a number between 0 and 120.\n';
+            }
+            if (!dob) {
+                isValid = false;
+                errorMessage += 'Date of Birth must be selected.\n';
+            }
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@abes\.ac\.in$/;
+            if (!emailPattern.test(email)) {
+                isValid = false;
+                errorMessage += 'Email must be in the format of yourname@abes.ac.in.\n';
+            }
+            if (password.length < 6) {
+                isValid = false;
+                errorMessage += 'Password must be at least 6 characters long.\n';
+            }
+            if (!tShirtSize) {
+                isValid = false;
+                errorMessage += 'Please select a T-Shirt Size.\n';
+            }
+            if (!color) {
+                isValid = false;
+                errorMessage += 'Please select a favorite color.\n';
+            }
+            if (!about) {
+                isValid = false;
+                errorMessage += 'Tell us about yourself cannot be empty.\n';
+            }
+            if (!isValid) {
+                alert(errorMessage);
+            } else {
+                alert('Form submitted successfully!');
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>ENTER YOUR DEATILS HERE</p>
+    <form action="" onsubmit="validateForm(event)">
+        <label>First Name <input type="text"></label><br>
+        <label>Age <input type="text" placeholder="Type number only"></label><br>
+        <label>DOB <input type="date"></label><br>
+        <label>Email <input type="text" placeholder="@abes.ac.in"></label>
+        <label>Password <input type="password"></label><br><br>
+
+        <p>Enter your T-Shirt Size</p>
+        <label>
+            <input type="radio" name="tshirt" value="small"> Small Size <br>
+            <input type="radio" name="tshirt" value="large"> Large Size
+        </label><br>
+
+        <label>Your Favorite Color <input type="color"></label><br>
+        <label>Tell us about yourself <textarea id="textarea"></textarea></label><br>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

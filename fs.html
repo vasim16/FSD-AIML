@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<p id="mul">MULTIPLY(2*3)</p>
+<button id="mu">SUBMIT</button>
+<p id="sub">SUBTRACT(3-2)</p>
+<button id="su">SUBMIT</button>
+<p id="add">ADD(3+2)</p>
+<button id="ad">SUBMIT</button>
+<p id="pi">VALUE OF PI(PI)</p>
+<button id="p">SUBMIT</button><br><br><br>
+<button id="cc">CLICK Me!</button>
+<p id="cb"></p>
+<body>
+    <script>
+    document.getElementById("mu").onclick= function () {
+        document.getElementById("mul").innerHTML="<b>6</b>"
+    }
+    document.getElementById("su").onclick= function () {
+        document.getElementById("sub").innerHTML="<b>1</b>"
+    }
+    document.getElementById("ad").onclick= function () {
+        document.getElementById("add").innerHTML="<b>5</b>"
+    }
+    document.getElementById("p").onclick= function () {
+        document.getElementById("pi").innerHTML="<b>3.143</b>"
+    }
+    document.getElementById("cc").onclick= function () {
+        document.getElementById("cb").innerHTML="<b>Buttton Clicked</b>"
+    }
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><form action="">
+    <label for="">First Name <input type="text" ></label>
+    <br>
+    <label for="">AGe <input type="text" placeholder="Type number only"></label><br>
+<label for="">DOB <input type="date"></label><br>
+<label for="">Email <input type="text" placeholder="@abes.ac.in"></label>
+<label for="">Password <input type="password"></label>
+<br><br>
+<p>Enter your TShirt Size</p>
+
+<label for="">
+    <input type="radio">&nbsp;&nbsp;Small Size <br>
+    <input type="radio">&nbsp;&nbsp;Large
+
+</label><br>
+<label>Your Favourate color 
+    <input type="color">
+</label><br>
+<label for="">Tell us about yourself <textarea name="textarea" id="textarea"></textarea></label>
+<button>reset</button>
+<button>submit</button>
+</form>
+</body>
+    <script>
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission for validation
+
+            // Get input values
+            const firstName = document.querySelector('input[type="text"]').value;
+            const age = document.querySelector('input[placeholder="Type number only"]').value;
+            const dob = document.querySelector('input[type="date"]').value;
+            const email = document.querySelector('input[placeholder="@abes.ac.in"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+            const tShirtSize = document.querySelector('input[type="radio"]:checked');
+            const color = document.querySelector('input[type="color"]').value;
+            const about = document.getElementById('textarea').value;
+            let isValid = true;
+            let errorMessage = '';
+            if (!firstName || !/^[a-zA-Z]+$/.test(firstName)) {
+                isValid = false;
+                errorMessage += 'First Name must be filled and contain only letters.\n';
+            }
+            if (!age || isNaN(age) || age < 0 || age > 120) {
+                isValid = false;
+                errorMessage += 'Age must be a number between 0 and 120.\n';
+            }
+            if (!dob) {
+                isValid = false;
+                errorMessage += 'Date of Birth must be selected.\n';
+            }
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@abes\.ac\.in$/;
+            if (!emailPattern.test(email)) {
+                isValid = false;
+                errorMessage += 'Email must be in the format of yourname@abes.ac.in.\n';
+            }
+            if (password.length < 6) {
+                isValid = false;
+                errorMessage += 'Password must be at least 6 characters long.\n';
+            }
+            if (!tShirtSize) {
+                isValid = false;
+                errorMessage += 'Please select a T-Shirt Size.\n';
+            }
+            if (!color) {
+                isValid = false;
+                errorMessage += 'Please select a favorite color.\n';
+            }
+            if (!about) {
+                isValid = false;
+                errorMessage += 'Tell us about yourself cannot be empty.\n';
+            }
+            if (!isValid) {
+                alert(errorMessage);
+            } else {
+                alert('Form submitted successfully!');
+            }
+        }
+    </script>
+</html>
