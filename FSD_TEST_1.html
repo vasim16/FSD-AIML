@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="test1.css">
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            const Username = document.querySelector('#user').value;
+            const password = document.querySelector('#pass').value;
+    
+            let errorMessage = '';
+            if (Username== "AIMLC" && password=="AIMLC") {
+                window.location.href = "./joke_generator.html"
+            
+            } else {
+                alert('Form submitted successfully!');
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="" onsubmit="validateForm(event)">
+        <label>Username <input id="user" type="text"></label><br>
+        <label>Password <input id="pass" type="password"></label><br><br>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+</body>
+</html>
